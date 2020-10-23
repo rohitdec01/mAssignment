@@ -19,6 +19,11 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
     UserDetailService userDetailService;
     JwtRequestFilter jwtRequestFilter;
 
+    private static final String[] AUTH_WHITELIST = {
+            "/authenticate",
+            "/test"
+    };
+
     public SecurityConfigurer(UserDetailService userDetailService, JwtRequestFilter jwtRequestFilter) {
         this.userDetailService = userDetailService;
         this.jwtRequestFilter = jwtRequestFilter;
@@ -35,7 +40,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
         // Note: check how to enable csrf(below)
         httpSecurity.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/authenticate","/test").permitAll()
+                .antMatchers(AUTH_WHITELIST).permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()

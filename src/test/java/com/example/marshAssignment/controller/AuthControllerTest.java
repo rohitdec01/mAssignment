@@ -47,8 +47,8 @@ public class AuthControllerTest {
 
     @Before
     public void setUp() {
-        when(authenticationManager.authenticate(any())).thenReturn(any());
         mockMvc = MockMvcBuilders.standaloneSetup(authController).build();
+//        when(authenticationManager.authenticate(any())).thenReturn(any());
     }
 
     @Test
