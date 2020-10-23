@@ -26,6 +26,7 @@ dependencies {
     compile('com.fasterxml.jackson.datatype:jackson-datatype-jdk8')
     compile group: 'org.glassfish.jersey.core', name: 'jersey-server', version: '2.29'
     compile('org.apache.commons:commons-lang3:3.9')
+    compile('org.springframework.boot:spring-boot-starter-validation:2.3.4.RELEASE')
 }
 
 test {

@@ -10,8 +10,11 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+
+import javax.validation.Valid;
 
 @RestController
 @CrossOrigin()
@@ -28,7 +31,7 @@ public class AuthController {
 
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> createAuthenticationToken(
-            @RequestBody AuthenticationRequest authenticationRequest
+            @Valid @RequestBody AuthenticationRequest authenticationRequest
     ) throws Exception {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(

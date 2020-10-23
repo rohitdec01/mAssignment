@@ -16,7 +16,6 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 public class UserDetailRepositoryTest {
 
     @Autowired
-    //@Mock
     private UserDetailRepository userDetailRepository;
 
     @After
