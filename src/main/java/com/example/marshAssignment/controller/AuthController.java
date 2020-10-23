@@ -1,20 +1,21 @@
 package com.example.marshAssignment.controller;
 
+import com.example.marshAssignment.exception.ApiErrorResponse;
 import com.example.marshAssignment.model.AuthenticationRequest;
 import com.example.marshAssignment.model.AuthenticationResponse;
 import com.example.marshAssignment.service.UserDetailService;
 import com.example.marshAssignment.util.JWTUtil;
-import com.example.marshAssignment.exception.ApiErrorResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
+
+import static java.util.Arrays.asList;
 
 @RestController
 @CrossOrigin()
@@ -50,9 +51,10 @@ public class AuthController {
         return "test Successful";
     }
 
+    // Controller Specific exception handler
     @ExceptionHandler(value = ResponseStatusException.class)
     public ResponseEntity<ApiErrorResponse> responseStatusException(ResponseStatusException e) {
         return ResponseEntity.status(e.getStatus())
-                .body(new ApiErrorResponse(e.getReason()));
+                .body(new ApiErrorResponse(e.getReason(), asList("other detail")));
     }
 }

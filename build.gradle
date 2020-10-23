@@ -1,8 +1,30 @@
+buildscript {
+    ext {
+        springBootVersion = '2.1.8.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.8.RELEASE"
+    }
+}
+
 plugins {
     id 'org.springframework.boot' version '2.3.4.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java'
 }
+
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Greenwich.RELEASE'
+        mavenBom 'io.pivotal.spring.cloud:spring-cloud-services-dependencies:2.1.2.RELEASE'
+    }
+}
+
+apply plugin: "io.spring.dependency-management"
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
@@ -27,6 +49,8 @@ dependencies {
     compile group: 'org.glassfish.jersey.core', name: 'jersey-server', version: '2.29'
     compile('org.apache.commons:commons-lang3:3.9')
     compile('org.springframework.boot:spring-boot-starter-validation:2.3.4.RELEASE')
+    implementation('org.springframework.cloud:spring-cloud-starter-openfeign')
+//    compile ('com.fasterxml.jackson.core:jackson-databind:2.9.8')
 }
 
 test {
