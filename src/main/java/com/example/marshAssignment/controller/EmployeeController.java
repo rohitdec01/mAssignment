@@ -16,8 +16,8 @@ import org.slf4j.LoggerFactory;
 
 @RestController
 //@CrossOrigin()
-public class DashboardController {
-    private static final Logger LOGGER = LoggerFactory.getLogger(DashboardController.class);
+public class EmployeeController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeController.class);
 
     // This is just for demo prospective otherwise constructor injection is preferred. // reflection.
     @Autowired
@@ -28,7 +28,7 @@ public class DashboardController {
                                                  @AuthenticationPrincipal Authentication authentication)
             throws EmployeeNotFoundException, Exception {
 
-        LOGGER.info("Inside getproductInfo  " + employeeId);
+        LOGGER.info("Inside get employee Info  " + employeeId);
 
         Employee employee = null;
         try {
