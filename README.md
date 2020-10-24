@@ -38,8 +38,7 @@
  
  1. Java 1.8
  2. IntelliJ  https://www.jetbrains.com/idea/download/#section=windows
- 3. Install Mongo DB: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/
- 4. Github: Download project from the following git repository
+ 3. Github: Download project from the following git repository
  https://github.com/rohitdec01/marshAssignment.git
  
  a) Download as a ZIP file   OR 
